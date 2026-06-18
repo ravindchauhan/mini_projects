@@ -51,34 +51,37 @@ customer_contacts = {
     "c49": {"name": "Varun", "contact": 7110099887},
     "c50": {"name": "Anjali", "contact": 6009988776}
 }
+
 while True:
   print("""
   ---- CONTACT MANAGER ----
   PRESS 1 TO ADD NEW CONTACT
   PRESS 2 TO SEARCH CONTACT
   PRESS 3 TO SHOW CONTACTS
-  PRESS 4 TO EXIT
+  PRESS 4 TO DELETE CONTACT
+  PRESS 5 TO EXIT
   """)
 
   choice=int(input("Enter your choice: "))
 
- 
-  if choice==1:
-    name=str(input("Enter name you want to add :"))
-    contact=int(input("enter their contact : "))
 
-    try:
-      if len(str(contact))!=10 or not contact.isdigit():
-          raise ValueError("Enter a valid 10 digit number.")
-       
-    except ValueError:
-         print("Enter a valid 10 digit number.")
- 
+  if choice==1:
+    # add contact
+    name=str(input("Enter name you want to add :"))
+    contact=input("enter their contact : ")
+
     
+    if len(contact)!=10 or not contact.isdigit():
+          print("Enter a valid 10 digit number.")
+
+
     else:
-        next_contact = f"c{len(customer_contacts) + 1}"
-        customer_contacts[next_contact]={"name":name, "contact":contact}
-        print("Contact added successfully.")
+      
+      next_contact = f"c{len(customer_contacts) + 1}"
+      customer_contacts[next_contact] = {"name": name, "contact": contact}
+      next_id_num += 1
+      print("Contact added successfully.")
+        
 
   elif choice==2:
       #search contact
@@ -94,9 +97,20 @@ while True:
       else:
           print(f"\nNo contact found with the name '{search_name}'.")
   elif choice==3:
-    print(customer_contacts)
-  
+    print(f"{'Contact ID':<15}\t\t{'Name':<15}\t\t\t\t{'Contact'}")
+    print("-" * 200)
+    for contact_id, info in customer_contacts.items():
+      print(f"{contact_id}\t\t{info['name']:<15}\t\t\t\t{info['contact']} ")
   elif choice==4:
+    #delete contact
+    contact_id=input("Enter ID you want to delete(example - c1): ").lower()
+    del customer_contacts[contact_id]
+    remaining = list(customer_contacts.values())
+    customer_contacts.clear()
+    for i, info in enumerate(remaining, start=1):
+        customer_contacts[f"c{i}"] = info
+    print("Contact deleted succesfully.")
+  elif choice==5:
     print("Exiting Contact Manager.")
     break
   else:
