@@ -139,7 +139,7 @@ while True:
       except ValueError:
         print("Invalid Input.")
       else:
-        power(num)
+        pow(num)
 
     elif choice==8:
       print("")
