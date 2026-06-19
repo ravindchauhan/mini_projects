@@ -106,12 +106,12 @@ while True:
     #delete contact
     contact_id=input("Enter ID you want to delete(example - c1): ").lower()
     if contact_id in customer_contacts:
-      del customer_contacts[contact_id]
-    remaining = list(customer_contacts.values())
-    customer_contacts.clear()
-    for i, info in enumerate(remaining, start=1):
+       del customer_contacts[contact_id]
+       remaining = list(customer_contacts.values())
+       customer_contacts.clear()
+       for i, info in enumerate(remaining, start=1):
         customer_contacts[f"c{i}"] = info
-    print("Contact deleted successfully.")
+        print("Contact deleted successfully.")
     else:
       print("Contact ID not found.")
   elif choice==5:
