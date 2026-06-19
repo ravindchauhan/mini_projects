@@ -79,7 +79,7 @@ while True:
       
       next_contact = f"c{len(customer_contacts) + 1}"
       customer_contacts[next_contact] = {"name": name, "contact": contact}
-      next_id_num += 1
+      
       print("Contact added successfully.")
         
 
@@ -97,6 +97,7 @@ while True:
       else:
           print(f"\nNo contact found with the name '{search_name}'.")
   elif choice==3:
+      #showing all contacts
     print(f"{'Contact ID':<15}\t\t{'Name':<15}\t\t\t\t{'Contact'}")
     print("-" * 200)
     for contact_id, info in customer_contacts.items():
@@ -104,12 +105,15 @@ while True:
   elif choice==4:
     #delete contact
     contact_id=input("Enter ID you want to delete(example - c1): ").lower()
-    del customer_contacts[contact_id]
+    if contact_id in customer_contacts:
+      del customer_contacts[contact_id]
     remaining = list(customer_contacts.values())
     customer_contacts.clear()
     for i, info in enumerate(remaining, start=1):
         customer_contacts[f"c{i}"] = info
-    print("Contact deleted succesfully.")
+    print("Contact deleted successfully.")
+    else:
+      print("Contact ID not found.")
   elif choice==5:
     print("Exiting Contact Manager.")
     break
