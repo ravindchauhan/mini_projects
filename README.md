@@ -46,7 +46,7 @@ This repository includes a GitHub Actions workflow (`.github/workflows/python-ap
 
 **Ravind Chauhan**
 - GitHub: [@ravindchauhan](https://github.com/ravindchauhan)
-
+- LinkedIn: [Ravind Singh](https://www.linkedin.com/in/ravindsingh27/)
 ## 📄 License
 
 This project is open source. Feel free to use and modify it for learning purposes.
